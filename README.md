@@ -1,2 +1,2 @@
-# treinamentos-rest-assured-petstore-api
-Treinamento RestAssured Petstore API
+# Treinamento RestAssured Petstore API
+
