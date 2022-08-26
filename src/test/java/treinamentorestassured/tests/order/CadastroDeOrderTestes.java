@@ -1,8 +1,7 @@
-package treinamentorestassured.tests.pet;
+package treinamentorestassured.tests.order;
 
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
-import org.hamcrest.Matcher;
 import org.testng.annotations.Test;
 import treinamentorestassured.bases.TestBase;
 import treinamentorestassured.jsonObjects.order.Order;
@@ -11,12 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
 
-public class CadastrarNovoPedidoDePetComSucesso extends TestBase {
+public class CadastroDeOrderTestes extends TestBase {
 
     @Test
-    public void teste() {
+    public void CadastrarNovoPedidoDePetComSucesso() {
         // parameters
         final int petId = 0;
         final int quantity = 0;
@@ -40,7 +39,7 @@ public class CadastrarNovoPedidoDePetComSucesso extends TestBase {
         Headers headers = new Headers(headerlist);
 
         // test
-        given().log().everything().
+        given().
                 basePath("/store/order").
                 headers(headers).
                 body(order).
@@ -49,10 +48,9 @@ public class CadastrarNovoPedidoDePetComSucesso extends TestBase {
                 then().
                 statusCode(200).
                 body("petId", equalTo(petId),
-                     "quantity", equalTo(quantity),
-                     "shipDate", equalTo(shipDateParaTestar),
-                     "status", equalTo(status),
-                     "complete", equalTo(complete));
+                        "quantity", equalTo(quantity),
+                        "shipDate", equalTo(shipDateParaTestar),
+                        "status", equalTo(status),
+                        "complete", equalTo(complete));
     }
-
 }

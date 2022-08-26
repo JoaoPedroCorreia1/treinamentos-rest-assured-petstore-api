@@ -1,7 +1,7 @@
 package treinamentorestassured.jsonObjects.pet;
 
 public class Category {
-    private int id = 0;
+    private int id = 1;
     private String name = "string";
 
 

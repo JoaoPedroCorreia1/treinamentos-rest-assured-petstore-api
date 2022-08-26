@@ -1,8 +1,8 @@
 package treinamentorestassured.jsonObjects.order;
 
 public class Order {
-    private int id = 0;
-    private int petId;
+    private long id = 0;
+    private long petId;
     private int quantity;
     private String shipDate;
     private String status;
@@ -11,11 +11,11 @@ public class Order {
 
     // Getter Methods 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public int getPetId() {
+    public long getPetId() {
         return petId;
     }
 
@@ -37,11 +37,11 @@ public class Order {
 
     // Setter Methods 
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public void setPetId(int petId) {
+    public void setPetId(long petId) {
         this.petId = petId;
     }
 

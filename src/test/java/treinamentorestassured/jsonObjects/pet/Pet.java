@@ -1,8 +1,8 @@
 package treinamentorestassured.jsonObjects.pet;
 
 public class Pet {
-    private int id = 0;
-    private Category CategoryObject = new Category();
+    private long id = 0;
+    private Category category = new Category();
     private String name = "doggie";
     private String[] photoUrls = new String[]{"string"};
     private Tag[] tags = new Tag[]{new Tag()};
@@ -10,13 +10,12 @@ public class Pet {
 
 
     // Getter Methods
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
     public Category getCategory() {
-        return CategoryObject;
+        return category;
     }
 
     public String getName() {
@@ -28,13 +27,12 @@ public class Pet {
     }
 
     // Setter Methods
-
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public void setCategory(Category categoryObject) {
-        this.CategoryObject = categoryObject;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public void setName(String name) {

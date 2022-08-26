@@ -6,10 +6,10 @@ import treinamentorestassured.bases.TestBase;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
-public class PesquisarPetInexistente extends TestBase {
+public class PesquisarPetTestes extends TestBase {
 
     @Test
-    public void teste() {
+    public void PesquisarPetInexistente() {
         // parameters
         final int idPetInexistente = 99998;
 

@@ -11,14 +11,14 @@ import static io.restassured.RestAssured.given;
 
 public class FlowCadastrarPet {
 
-    public int CadastrarPetRetornaId(Pet pet) {
+    public long CadastrarPetRetornaId(Pet pet) {
         // headers
         List<Header> headerlist = new ArrayList<Header>();
         headerlist.add(new Header("Content-Type", "application/json"));
         headerlist.add(new Header("accept", "application/json"));
         Headers headers = new Headers(headerlist);
 
-        int idCadastrado = given().
+        long idCadastrado = given().
                 basePath("/pet").
                 body(pet).
                 headers(headers).
