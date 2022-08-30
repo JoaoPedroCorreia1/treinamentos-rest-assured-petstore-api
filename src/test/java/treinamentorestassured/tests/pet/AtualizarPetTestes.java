@@ -19,14 +19,11 @@ public class AtualizarPetTestes extends TestBase {
 
     @Test
     public void AtualizarDadosDePetExistente() {
-        // objs
+        // object instances
         FlowCadastrarPet flowCadastrarPet = new FlowCadastrarPet();
 
-        //before
-        long idPet = flowCadastrarPet.CadastrarPetRetornaId(new Pet());
-
         // parameters
-        final long idPetExistente = idPet;
+        long idPetExistente;
 
         Category categoryParaEditar = new Category();
         categoryParaEditar.setName("category editada");
@@ -40,6 +37,9 @@ public class AtualizarPetTestes extends TestBase {
         final Tag[] tagsParaEditar = new Tag[]{tag1Editada};
 
         final String statusParaEditar = "pending";
+
+        //before
+        idPetExistente = flowCadastrarPet.CadastrarPetRetornaId(new Pet());
 
         // body
         Pet petParaEditar = new Pet();
