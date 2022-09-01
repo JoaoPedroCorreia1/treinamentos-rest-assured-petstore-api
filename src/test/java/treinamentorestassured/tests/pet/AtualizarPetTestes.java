@@ -9,6 +9,9 @@ import treinamentorestassured.jsonObjects.pet.Category;
 import treinamentorestassured.jsonObjects.pet.Pet;
 import treinamentorestassured.jsonObjects.pet.Tag;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,6 +80,67 @@ public class AtualizarPetTestes extends TestBase {
                         "tags[0].id", equalTo(tag1Editada.getId()),
                         "tags[0].name", equalTo(tag1Editada.getName()),
                         "status", equalTo(statusParaEditar));
+    }
+
+    @Test
+    public void AtualizarPetComIdComFormatoInvalido() {
+        // parameters
+        final String idComFomatoInvalido = "string";
+
+        // body
+        JSONObject pet = new JSONObject();
+        JSONObject category = new JSONObject();
+        JSONObject tag1 = new JSONObject();
+        JSONObject tag2 = new JSONObject();
+        JSONArray tags = new JSONArray();
+        JSONArray photoURLs = new JSONArray();
+
+        pet.put("id", idComFomatoInvalido); // formato inválido
+        pet.put("name", "Shepherd");
+        pet.put("status", "available");
+
+        category.put("id", 99998);
+        category.put("name", "felino");
+        pet.put("category", category);
+
+        tag1.put("id", 99998);
+        tag1.put("name", "Sem raça definida");
+        tag2.put("id", 99999);
+        tag2.put("name", "Amarelo");
+        tags.add(tag1);
+        tags.add(tag2);
+        pet.put("tags", tags);
+
+        photoURLs.add("fotosdegato.com.br/foto1.png");
+        photoURLs.add("fotosdegato.com.br/foto2.png");
+
+        pet.put("photoUrls", photoURLs);
+        // headers
+        List<Header> headerlist = new ArrayList<Header>();
+        headerlist.add(new Header("Content-Type", "application/json"));
+        headerlist.add(new Header("accept", "application/json"));
+        Headers headers = new Headers(headerlist);
+
+        // test
+        given().
+                basePath("/pet").
+                headers(headers).
+                body(pet).
+                when().
+                put().
+                then().
+                statusCode(400);
+    }
+
+    @Test
+    public void RealizarRequisicaoComMetodoInvalido() {
+        // test
+        given().
+                basePath("/pet").
+                when().
+                patch().
+                then().
+                statusCode(405);
     }
 
 }
